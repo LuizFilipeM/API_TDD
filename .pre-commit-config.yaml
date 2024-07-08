@@ -1,7 +1,7 @@
 default_language_version:
-    python: python3.11
+    python: python3.10
 repos:
--   repos: https://github.com/pre-commit/pre-commit-hooks
+-   repo: git@github.com:pre-commit/pre-commit-hooks.git
     rev: v4.4.0
     hooks:
     -   id: check-added-large-files
@@ -11,20 +11,20 @@ repos:
         -   --unsafe
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
--   repo: https://github.com/asottile/pyupgrade
+-   repo: git@github.com:asottile/pyupgrade.git
     rev: v3.7.0
     hooks:
     -   id: pyupgrade
         args:
         - --py3-plus
         - --keep-runtime-typing
--   repo: https://github.com/charliemarsh/ruff-pre-commit
+-   repo: git@github.com:astral-sh/ruff-pre-commit.git
     rev: v0.0.275
     hooks:
     -   id: ruff
         args:
         - --fix
--   repo: https://github.com/psf/black
+-   repo: git@github.com:psf/black.git
     rev: 23.3.0
     hooks:
     -   id: black
