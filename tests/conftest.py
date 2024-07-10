@@ -1,3 +1,4 @@
+from typing import AsyncGenerator
 import pytest
 import asyncio
 
@@ -21,7 +22,7 @@ def mongo_client():
     return db_client.get()
 
 
-"""@pytest.fixture(autouse=True)
+@pytest.fixture(autouse=True)
 async def clear_collections(mongo_client):
     yield
     collection_names = await mongo_client.get_database().list_collection_names()
@@ -30,11 +31,10 @@ async def clear_collections(mongo_client):
             continue
 
         await mongo_client.get_database()[collection_name].delete_many({})
-"""
 
 
 @pytest.fixture
-async def client():
+async def client() -> AsyncGenerator[AsyncClient, None]:
     from store.main import app
 
     async with AsyncClient(app=app, base_url="http://test") as ac:
